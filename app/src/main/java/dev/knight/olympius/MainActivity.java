@@ -76,53 +76,14 @@ public class MainActivity extends AppCompatActivity {
         who_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int bigger = score[0];
-                for (int i = 1; i < score.length; i++) {
-                    if (score[i] > bigger) {
-                        bigger = score[i];
-                    }
-                }
-                int count = 0;
-                for (int i = 0; i < score.length; i++) {
-                    if (score[i] == bigger) {
-                        count++;
-                    }
-                }
-                if (count == 3) {
-                    who_text.setText("The three tied.");
-                }
-                if (count == 2) {
-                    for (int i = 0; i < score.length; i++) {
-                        if (score[i] != bigger) {
-                            switch (i) {
-                                case 0:
-                                    who_text.setText("Dudu and Edu tied.");
-                                    break;
-                                case 1:
-                                    who_text.setText("Du and Edu tied.");
-                                    break;
-                                case 2:
-                                    who_text.setText("Du and Dudu tied.");
-                                    break;
-                            }
-                        }
-                    }
+                if (score[0] > score[1] && score[0] > score[2]){
+                    who_text.setText("Du is the winner!");
+                } else if (score[1] > score[0] && score[1] > score[2]){
+                    who_text.setText("Dudu is the winner!");
+                } else if (score[2] > score[0] && score[2] > score[1]){
+                    who_text.setText("Edu is the winner!");
                 } else {
-                    for (int i = 0; i < score.length; i++) {
-                        if (score[i] == bigger) {
-                            switch (i) {
-                                case 0:
-                                    who_text.setText("Du is the winner!");
-                                    break;
-                                case 1:
-                                    who_text.setText("Dudu is the winner.");
-                                    break;
-                                case 2:
-                                    who_text.setText("Edu is the winner.");
-                                    break;
-                            }
-                        }
-                    }
+                    who_text.setText("There's no winner yet!");
                 }
                 who_text.setVisibility(View.VISIBLE);
             }
